@@ -39,22 +39,55 @@ import java.util.Scanner;
 //
 //}
 // p 24 leetcode : 344
+//public class Day7{
+//    public static void main(String[] args) {
+//        char [] s =new char[] {'h', 'e', 'l', 'l', 'o'};
+//        reverseString(s);
+//        System.out.println(Arrays.toString(s));
+//    }
+//    public static void reverseString(char[] s) {
+//        int left = 0;
+//        int right = s.length - 1;
+//
+//        while(left <= right){
+//            char temp = s[left];
+//            s[left] = s[right];
+//            s[right] = temp;
+//            left++;
+//            right--;
+//        }
+//    }
+//}
+//   P25. Left Rotation by K elements
 public class Day7{
     public static void main(String[] args) {
-        char [] s =new char[] {'h', 'e', 'l', 'l', 'o'};
-        reverseString(s);
-        System.out.println(Arrays.toString(s));
+        int [] arr = {1,2,3,4,5};
+
+        Scanner sc = new Scanner(System.in);
+
+        int k = sc.nextInt();
+
+        k = k % arr.length;
+
+        if(k != 0){
+
+        reverseString(arr , 0 , k -1);
+        reverseString(arr , k , arr.length - 1);
+        reverseString(arr , 0 , arr.length - 1);
+
+        }
+
+        System.out.println(Arrays.toString(arr));
     }
-    public static void reverseString(char[] s) {
-        int left = 0;
-        int right = s.length - 1;
+    public static void reverseString(int [] s , int left , int right) {
 
         while(left <= right){
-            char temp = s[left];
+            int temp = s[left];
             s[left] = s[right];
             s[right] = temp;
             left++;
             right--;
         }
     }
+
 }
