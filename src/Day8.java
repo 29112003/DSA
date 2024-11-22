@@ -241,19 +241,42 @@ import java.util.Scanner;
 ////26. Remove Duplicates from Sorted Array
 
 
-public class Day8{
-    public int removeDuplicates(int[] nums) {
-        int lastUnique = 0;
-        for(int i = 1 ; i < nums.length ; i++){
-            if(nums[i] != nums[lastUnique]){
-                lastUnique++;
-                nums[lastUnique] = nums[i];
+//public class Day8{
+//    public int removeDuplicates(int[] nums) {
+//        int lastUnique = 0;
+//        for(int i = 1 ; i < nums.length ; i++){
+//            if(nums[i] != nums[lastUnique]){
+//                lastUnique++;
+//                nums[lastUnique] = nums[i];
+//            }
+//        }
+//        return lastUnique + 1;
+//    }
+//    public static void main(String[] args) {
+////        Time complexity: The solution runs in O(n) time because we only traverse the array once.
+////        Space complexity: The solution works in-place with O(1) extra space (no need for additional arrays or extra memory).
+//    }
+//}
+
+//P31. 1089. Duplicate Zeros
+
+        public class Day8{
+    public void duplicateZeros(int[] arr) {
+        int count = 0;
+        int [] temp = new int [arr.length];
+
+        for(int i = 0 ; i < arr.length ; i++){
+            if(count == arr.length)break;
+            temp[count++] = arr[i];
+            if(arr[i] == 0 && count < arr.length){
+                temp[count++] = 0;
             }
         }
-        return lastUnique + 1;
+        for(int i = 0 ; i < arr.length ; i++){
+            arr[i] = temp[i];
+        }
     }
     public static void main(String[] args) {
-//        Time complexity: The solution runs in O(n) time because we only traverse the array once.
-//        Space complexity: The solution works in-place with O(1) extra space (no need for additional arrays or extra memory).
+
     }
 }
