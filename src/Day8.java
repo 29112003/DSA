@@ -259,24 +259,57 @@ import java.util.Scanner;
 //}
 
 //P31. 1089. Duplicate Zeros
+//
+//        public class Day8{
+//    public void duplicateZeros(int[] arr) {
+//        int count = 0;
+//        int [] temp = new int [arr.length];
+//
+//        for(int i = 0 ; i < arr.length ; i++){
+//            if(count == arr.length)break;
+//            temp[count++] = arr[i];
+//            if(arr[i] == 0 && count < arr.length){
+//                temp[count++] = 0;
+//            }
+//        }
+//        for(int i = 0 ; i < arr.length ; i++){
+//            arr[i] = temp[i];
+//        }
+//    }
+//    public static void main(String[] args) {
+//
+//    }
+//}
 
-        public class Day8{
+//P31. 1089. Duplicate Zeros
+//    two pointer approach
+
+public class Day8 {
+
     public void duplicateZeros(int[] arr) {
-        int count = 0;
-        int [] temp = new int [arr.length];
+        int countZero = 0;
 
         for(int i = 0 ; i < arr.length ; i++){
-            if(count == arr.length)break;
-            temp[count++] = arr[i];
-            if(arr[i] == 0 && count < arr.length){
-                temp[count++] = 0;
+            if(arr[i] == 0){
+                countZero++ ;
             }
         }
-        for(int i = 0 ; i < arr.length ; i++){
-            arr[i] = temp[i];
+
+        for(int i = arr.length - 1 ; i >= 0 ; i--){
+            if(i + countZero < arr.length){
+                arr[i + countZero] = arr[i];
+            }
+            if(arr[i] == 0){
+                countZero--;
+                if(i + countZero < arr.length){
+                    arr[i + countZero] = arr[i];
+                }
+            }
         }
     }
+
     public static void main(String[] args) {
 
     }
+    /// /O(n) time and uses O(1) extra space
 }
