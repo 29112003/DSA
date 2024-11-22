@@ -108,61 +108,131 @@ import java.util.Scanner;
 
 //// P28. 88. Merge Sorted Array optimal
 import java.util.Scanner;
+//
+//public class Day8 {
+//
+//    public static void merge(int[] nums1, int m, int[] nums2, int n) {
+//        int count = nums1.length - 1;
+//        int count1 = m - 1;
+//        int count2 = n - 1;
+//
+//        while (count >= 0 && count1 >= 0 && count2 >= 0) {
+//            if (nums1[count1] < nums2[count2]) {
+//                nums1[count] = nums2[count2];
+//                count2--;
+//            } else {
+//                nums1[count] = nums1[count1];
+//                count1--;
+//            }
+//            count--;
+//        }
+//
+//        while (count2 >= 0) {
+//            nums1[count] = nums2[count2];
+//            count--;
+//            count2--;
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.println("Enter the size of array nums1 (m):");
+//        int m = sc.nextInt();
+//
+//        System.out.println("Enter the size of array nums2 (n):");
+//        int n = sc.nextInt();
+//
+//        int[] nums1 = new int[m + n];
+//
+//        System.out.println("Enter elements for nums1 (m elements):");
+//        for (int i = 0; i < m; i++) {
+//            nums1[i] = sc.nextInt();
+//        }
+//
+//        int[] nums2 = new int[n];
+//
+//        System.out.println("Enter elements for nums2 (n elements):");
+//        for (int i = 0; i < n; i++) {
+//            nums2[i] = sc.nextInt();
+//        }
+//
+//        merge(nums1, m, nums2, n);
+//
+//        System.out.print("Merged array: ");
+//        for (int num : nums1) {
+//            System.out.print(num + " ");
+//        }
+//    }
+//    ////    complexity is space 0(1) and  time(n+m)
+//}
+//P29. 941. Valid Mountain Array
+//public class Day8 {
+//
+//
+//        public static boolean validMountainArray(int[] arr) {
+//            if(arr.length < 3)return false;
+//            boolean peak = false;
+//            for(int i = 1 ; i < arr.length-1 ; i++){
+//                if(peak){
+//                    if(arr[i] <= arr[i+1])return false;
+//                }
+//                if(arr[i] == arr[i+1])return false;
+//                if(arr[i-1] < arr[i] && arr[i] > arr[i+1])peak = true;
+//
+//                if(arr[i-1] > arr[i] && arr[i] < arr[i+1])return false;
+//            }
+//            if(!peak)   return false;
+//
+//            return true;
+//        }
+//
+//
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.println("enter the size of array");
+//        int size = sc.nextInt();
+//
+//        int [] nums = new int[size];
+//
+//        System.out.println("enter all elements one by one okay");
+//        for(int i = 0 ; i < size ; i++){
+//            nums[i] = sc.nextInt();
+//        }
+//    }
+//}
+//941. Valid Mountain Array
+///// by two pointer approach
 
-public class Day8 {
-
-    public static void merge(int[] nums1, int m, int[] nums2, int n) {
-        int count = nums1.length - 1;
-        int count1 = m - 1;
-        int count2 = n - 1;
-
-        while (count >= 0 && count1 >= 0 && count2 >= 0) {
-            if (nums1[count1] < nums2[count2]) {
-                nums1[count] = nums2[count2];
-                count2--;
-            } else {
-                nums1[count] = nums1[count1];
-                count1--;
-            }
-            count--;
-        }
-
-        while (count2 >= 0) {
-            nums1[count] = nums2[count2];
-            count--;
-            count2--;
-        }
-    }
-
+public  class Day8{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Enter the size of array nums1 (m):");
-        int m = sc.nextInt();
+        System.out.println("enter the size of array");
+        int size = sc.nextInt();
 
-        System.out.println("Enter the size of array nums2 (n):");
-        int n = sc.nextInt();
+        int [] nums = new int[size];
 
-        int[] nums1 = new int[m + n];
-
-        System.out.println("Enter elements for nums1 (m elements):");
-        for (int i = 0; i < m; i++) {
-            nums1[i] = sc.nextInt();
-        }
-
-        int[] nums2 = new int[n];
-
-        System.out.println("Enter elements for nums2 (n elements):");
-        for (int i = 0; i < n; i++) {
-            nums2[i] = sc.nextInt();
-        }
-
-        merge(nums1, m, nums2, n);
-
-        System.out.print("Merged array: ");
-        for (int num : nums1) {
-            System.out.print(num + " ");
+        System.out.println("enter all elements one by one okay");
+        for(int i = 0 ; i < size ; i++){
+            nums[i] = sc.nextInt();
         }
     }
-    ////    complexity is space 0(1) and  time(n+m)
+    class Solution {
+
+        public boolean validMountainArray(int[] arr) {
+            int left = 0;
+            int right = arr.length - 1;
+
+            while(left < arr.length -1 && arr[left] < arr[left + 1] ){
+                left++;
+            }
+
+            while(right >= 1 && arr[right] < arr[right - 1] ){
+                right--;
+            }
+            return left == right && left > 0 && right < arr.length - 1;
+        }
+    }
 }
