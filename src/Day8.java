@@ -1,4 +1,5 @@
 //P27. 485. Max Consecutive Ones
+import java.util.Arrays;
 import java.util.Scanner;
 //
 //public class Day8 {
@@ -284,32 +285,75 @@ import java.util.Scanner;
 //P31. 1089. Duplicate Zeros
 //    two pointer approach
 
-public class Day8 {
+//public class Day8 {
+//
+//    public void duplicateZeros(int[] arr) {
+//        int countZero = 0;
+//
+//        for(int i = 0 ; i < arr.length ; i++){
+//            if(arr[i] == 0){
+//                countZero++ ;
+//            }
+//        }
+//
+//        for(int i = arr.length - 1 ; i >= 0 ; i--){
+//            if(i + countZero < arr.length){
+//                arr[i + countZero] = arr[i];
+//            }
+//            if(arr[i] == 0){
+//                countZero--;
+//                if(i + countZero < arr.length){
+//                    arr[i + countZero] = arr[i];
+//                }
+//            }
+//        }
+//    }
+//
+//    public static void main(String[] args) {
+//
+//    }
+//    /// /O(n) time and uses O(1) extra space
+//}
 
-    public void duplicateZeros(int[] arr) {
-        int countZero = 0;
 
-        for(int i = 0 ; i < arr.length ; i++){
-            if(arr[i] == 0){
-                countZero++ ;
-            }
-        }
 
-        for(int i = arr.length - 1 ; i >= 0 ; i--){
-            if(i + countZero < arr.length){
-                arr[i + countZero] = arr[i];
-            }
-            if(arr[i] == 0){
-                countZero--;
-                if(i + countZero < arr.length){
-                    arr[i + countZero] = arr[i];
-                }
+//P34. 283. Move Zeroes
+
+public class Day8{
+    public static void moveZeroes(int[] nums) {
+        int count = 0;
+        for(int i = 0 ; i < nums.length ; i++){
+            if(nums[i] != 0){
+                int temp  = nums[i];
+                nums[i] = nums[count];
+                nums[count] = temp;
+                count++;
             }
         }
     }
-
     public static void main(String[] args) {
 
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("enter the size of array");
+        int size = sc.nextInt();
+
+        int [] nums = new int[size];
+
+        System.out.println("enter all elements one by one okay");
+        for(int i = 0 ; i < size ; i++){
+            nums[i] = sc.nextInt();
+        }
+
+        moveZeroes(nums);
+
+//        Time Complexity:
+//
+//The time complexity of this algorithm is O(n) because you iterate over the array once, and the swapping operation is constant time for each non-zero element.
+//Space Complexity:
+//
+//The space complexity is O(1) because you are modifying the array in place and using only a constant amount of extra space (count and temp).
+
+        System.out.println(Arrays.toString(nums));
     }
-    /// /O(n) time and uses O(1) extra space
 }
