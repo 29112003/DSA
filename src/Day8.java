@@ -204,35 +204,56 @@ import java.util.Scanner;
 //}
 //941. Valid Mountain Array
 ///// by two pointer approach
+//
+//public  class Day8{
+//    public static void main(String[] args) {
+//        Scanner sc = new Scanner(System.in);
+//
+//        System.out.println("enter the size of array");
+//        int size = sc.nextInt();
+//
+//        int [] nums = new int[size];
+//
+//        System.out.println("enter all elements one by one okay");
+//        for(int i = 0 ; i < size ; i++){
+//            nums[i] = sc.nextInt();
+//        }
+//    }
+//    class Solution {
+//
+//        public boolean validMountainArray(int[] arr) {
+//            int left = 0;
+//            int right = arr.length - 1;
+//
+//            while(left < arr.length -1 && arr[left] < arr[left + 1] ){
+//                left++;
+//            }
+//
+//            while(right >= 1 && arr[right] < arr[right - 1] ){
+//                right--;
+//            }
+//            return left == right && left > 0 && right < arr.length - 1;
+//        }
+//    }
+//}
 
-public  class Day8{
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
 
-        System.out.println("enter the size of array");
-        int size = sc.nextInt();
+////26. Remove Duplicates from Sorted Array
 
-        int [] nums = new int[size];
 
-        System.out.println("enter all elements one by one okay");
-        for(int i = 0 ; i < size ; i++){
-            nums[i] = sc.nextInt();
+public class Day8{
+    public int removeDuplicates(int[] nums) {
+        int lastUnique = 0;
+        for(int i = 1 ; i < nums.length ; i++){
+            if(nums[i] != nums[lastUnique]){
+                lastUnique++;
+                nums[lastUnique] = nums[i];
+            }
         }
+        return lastUnique + 1;
     }
-    class Solution {
-
-        public boolean validMountainArray(int[] arr) {
-            int left = 0;
-            int right = arr.length - 1;
-
-            while(left < arr.length -1 && arr[left] < arr[left + 1] ){
-                left++;
-            }
-
-            while(right >= 1 && arr[right] < arr[right - 1] ){
-                right--;
-            }
-            return left == right && left > 0 && right < arr.length - 1;
-        }
+    public static void main(String[] args) {
+//        Time complexity: The solution runs in O(n) time because we only traverse the array once.
+//        Space complexity: The solution works in-place with O(1) extra space (no need for additional arrays or extra memory).
     }
 }
