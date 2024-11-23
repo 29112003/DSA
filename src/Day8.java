@@ -34,6 +34,10 @@ import java.util.Scanner;
 //}
 
 
+//===============================================================================================================
+
+
+
 //P28. 88. Merge Sorted Array
 
 //
@@ -107,6 +111,12 @@ import java.util.Scanner;
 //
 //}
 
+
+
+//===============================================================================================================
+
+
+
 //// P28. 88. Merge Sorted Array optimal
 import java.util.Scanner;
 //
@@ -167,6 +177,10 @@ import java.util.Scanner;
 //    }
 //    ////    complexity is space 0(1) and  time(n+m)
 //}
+
+
+//===============================================================================================================
+
 //P29. 941. Valid Mountain Array
 //public class Day8 {
 //
@@ -203,6 +217,13 @@ import java.util.Scanner;
 //        }
 //    }
 //}
+
+
+
+//===============================================================================================================
+
+
+
 //941. Valid Mountain Array
 ///// by two pointer approach
 //
@@ -239,6 +260,8 @@ import java.util.Scanner;
 //}
 
 
+//===============================================================================================================
+
 ////26. Remove Duplicates from Sorted Array
 
 
@@ -258,6 +281,9 @@ import java.util.Scanner;
 ////        Space complexity: The solution works in-place with O(1) extra space (no need for additional arrays or extra memory).
 //    }
 //}
+
+
+//===============================================================================================================
 
 //P31. 1089. Duplicate Zeros
 //
@@ -281,6 +307,8 @@ import java.util.Scanner;
 //
 //    }
 //}
+
+//===============================================================================================================
 
 //P31. 1089. Duplicate Zeros
 //    two pointer approach
@@ -316,44 +344,96 @@ import java.util.Scanner;
 //}
 
 
+//most optimal here it is
+
+//public int[] sortedSquares(int[] nums) {
+//    int [] result = new int [nums.length];
+//    int left = 0;
+//    int right = nums.length - 1;
+//    int count = nums.length - 1;
+//
+//    for(int i = 0 ; i < nums.length ; i++){
+//        nums[i] = nums[i] * nums[i];
+//    }
+//
+//    while(left <= right){
+//        if(nums[left] < nums[right]){
+//            result[count--] = nums[right--];
+//        }else {
+//            result[count--] = nums[left++];
+//        }
+//    }
+//    return result;
+//}
+
+
+
+//===============================================================================================================
 
 //P34. 283. Move Zeroes
 
-public class Day8{
-    public static void moveZeroes(int[] nums) {
-        int count = 0;
-        for(int i = 0 ; i < nums.length ; i++){
-            if(nums[i] != 0){
-                int temp  = nums[i];
-                nums[i] = nums[count];
-                nums[count] = temp;
-                count++;
-            }
-        }
-    }
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
-
-        System.out.println("enter the size of array");
-        int size = sc.nextInt();
-
-        int [] nums = new int[size];
-
-        System.out.println("enter all elements one by one okay");
-        for(int i = 0 ; i < size ; i++){
-            nums[i] = sc.nextInt();
-        }
-
-        moveZeroes(nums);
-
-//        Time Complexity:
+//public class Day8{
+//    public static void moveZeroes(int[] nums) {
+//        int count = 0;
+//        for(int i = 0 ; i < nums.length ; i++){
+//            if(nums[i] != 0){
+//                int temp  = nums[i];
+//                nums[i] = nums[count];
+//                nums[count] = temp;
+//                count++;
+//            }
+//        }
+//    }
+//    public static void main(String[] args) {
 //
-//The time complexity of this algorithm is O(n) because you iterate over the array once, and the swapping operation is constant time for each non-zero element.
-//Space Complexity:
+//        Scanner sc = new Scanner(System.in);
 //
-//The space complexity is O(1) because you are modifying the array in place and using only a constant amount of extra space (count and temp).
+//        System.out.println("enter the size of array");
+//        int size = sc.nextInt();
+//
+//        int [] nums = new int[size];
+//
+//        System.out.println("enter all elements one by one okay");
+//        for(int i = 0 ; i < size ; i++){
+//            nums[i] = sc.nextInt();
+//        }
+//
+//        moveZeroes(nums);
+//
+////        Time Complexity:
+////
+////The time complexity of this algorithm is O(n) because you iterate over the array once, and the swapping operation is constant time for each non-zero element.
+////Space Complexity:
+////
+////The space complexity is O(1) because you are modifying the array in place and using only a constant amount of extra space (count and temp).
+//
+//        System.out.println(Arrays.toString(nums));
+//    }
+//}
 
-        System.out.println(Arrays.toString(nums));
-    }
-}
+
+
+//// p 33
+
+
+//most optimal here it is
+
+//public int[] sortedSquares(int[] nums) {
+//    int [] result = new int [nums.length];
+//    int left = 0;
+//    int right = nums.length - 1;
+//    int count = nums.length - 1;
+//
+//    for(int i = 0 ; i < nums.length ; i++){
+//        nums[i] = nums[i] * nums[i];
+//    }
+//
+//    while(left <= right){
+//        if(nums[left] < nums[right]){
+//            result[count--] = nums[right--];
+//        }else {
+//            result[count--] = nums[left++];
+//        }
+//    }
+//    return result;
+//}
